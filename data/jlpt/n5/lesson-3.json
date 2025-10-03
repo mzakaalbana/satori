@@ -1,0 +1,80 @@
+{
+"title": "N5 — Pelajaran 3",
+"subtitle": "Koko/Soko/Asoko dan Keberadaan (あります/います)",
+"vocab": [
+{ "kanji": "上", "kana": "うえ", "id": "atas", "romaji": "ue" },
+{ "kanji": "下", "kana": "した", "id": "bawah", "romaji": "shita" },
+{ "kanji": "中", "kana": "なか", "id": "dalam; tengah", "romaji": "naka" },
+{ "kanji": "外", "kana": "そと", "id": "luar", "romaji": "soto" },
+{ "kanji": "右", "kana": "みぎ", "id": "kanan", "romaji": "migi" },
+{ "kanji": "左", "kana": "ひだり", "id": "kiri", "romaji": "hidari" },
+{ "kanji": "前", "kana": "まえ", "id": "depan", "romaji": "mae" },
+{ "kanji": "後", "kana": "うしろ", "id": "belakang", "romaji": "ushiro" },
+{ "kanji": "隣", "kana": "となり", "id": "sebelah", "romaji": "tonari" },
+{ "kanji": "間", "kana": "あいだ", "id": "antara", "romaji": "aida" },
+{ "kanji": "近く", "kana": "ちかく", "id": "dekat", "romaji": "chikaku" },
+{ "kanji": "部屋", "kana": "へや", "id": "kamar", "romaji": "heya" },
+{ "kanji": "銀行", "kana": "ぎんこう", "id": "bank", "romaji": "ginkou" },
+{ "kanji": "駅", "kana": "えき", "id": "stasiun", "romaji": "eki" },
+{ "kanji": "病院", "kana": "びょういん", "id": "rumah sakit", "romaji": "byouin" },
+{ "kanji": "郵便局", "kana": "ゆうびんきょく", "id": "kantor pos", "romaji": "yuubinkyoku" },
+{ "kanji": "—", "kana": "テーブル", "id": "meja (serapan asing)", "romaji": "teeburu" },
+{ "kanji": "—", "kana": "いす", "id": "kursi", "romaji": "isu" },
+{ "kanji": "本棚", "kana": "ほんだな", "id": "rak buku", "romaji": "hondana" },
+{ "kanji": "—", "kana": "ビル", "id": "gedung", "romaji": "biru" }
+],
+"bunpou": [
+{
+"title": "Kata Tunjuk Lokasi: Koko / Soko / Asoko",
+"examples": [
+{ "jp": "すみません、トイレ は どこ ですか。", "id": "Permisi, toilet ada di mana?" },
+{ "jp": "ええと、あそこ です。", "id": "Emm, ada di sana (jauh)." },
+{ "jp": "ここ は わたし の しごと の へや です。", "id": "Sini (tempat ini) adalah ruangan kerja saya." }
+],
+"note": "Penggunaan: ここ (tempat ini, dekat pembicara), そこ (tempat itu, dekat lawan bicara), あそこ (tempat itu, jauh dari keduanya), どこ (di mana)."
+},
+{
+"title": "N1 は N2 に あります / います (Keberadaan)",
+"examples": [
+{ "jp": "かぎ は かばん の なか に あります。", "id": "Kunci ada di dalam tas." },
+{ "jp": "いぬ は テーブル の した に います。", "id": "Anjing ada di bawah meja." },
+{ "jp": "やまもとさん は ゆうびんきょく の となり に いますか。", "id": "Apakah Yamamoto-san ada di sebelah kantor pos?" }
+],
+"note": "あります digunakan untuk benda mati/tumbuhan. います digunakan untuk makhluk hidup (orang, hewan, dll.). Partikel に menandakan lokasi keberadaan."
+}
+],
+"kanji": [
+{ "char": "上", "id": "atas", "on": "ジョウ", "kun": "うえ" },
+{ "char": "下", "id": "bawah", "on": "カ, ゲ", "kun": "した" },
+{ "char": "中", "id": "dalam; tengah", "on": "チュウ, ジュウ", "kun": "なか" },
+{ "char": "右", "id": "kanan", "on": "ユウ, ウ", "kun": "みぎ" },
+{ "char": "左", "id": "kiri", "on": "サ", "kun": "ひだり" }
+],
+"dokkai": {
+"jp": "すみません、このちかくにぎんこうがありますか。はい、ありますよ。あのビルのうしろです。えきとびょういんのあいだにあります。ありがとう。そこにさとうさんもいますか。いいえ、さとうさんはきょう、がっこうのなかにいます。",
+"id": "Permisi, apakah ada bank di dekat sini? Ya, ada lho. Ada di belakang gedung itu. Ada di antara stasiun dan rumah sakit. Terima kasih. Apakah Sato-san juga ada di sana? Tidak, Sato-san hari ini ada di dalam sekolah.",
+"notes": [
+"Kata このちかく berarti 'di dekat sini', menggunakan kata tunjuk この yang diikuti N (chikai).",
+"Frasa N1 と N2 の あいだ digunakan untuk menunjukkan lokasi 'di antara' dua tempat/benda.",
+"Kata きょう (kyou) berarti 'hari ini'."
+]
+},
+"choukai": {
+"question": "Pria A menanyakan lokasi suatu tempat. Apa jawaban yang benar berdasarkan dialog?",
+"audioScript": "男A：このへやのなかにおみやげがありますか。男B：ええ、あのかばんのしたにあります。",
+"options": ["Oleh-oleh ada di dalam kamar.", "Oleh-oleh ada di bawah tas itu (jauh).", "Oleh-oleh ada di atas meja."],
+"answer": 1
+},
+"quiz": [
+{ "type": "mcq", "q": "Lengkapi kalimat: 'わたしのいぬはテーブルの ___ に います。'", "options": ["うえ", "した", "なか"], "answer": 1 },
+{ "type": "mcq", "q": "Kanji '右' (migi) berarti...?", "options": ["Kiri", "Kanan", "Atas"], "answer": 1 },
+{ "type": "mcq", "q": "Pilih terjemahan yang tepat: 'ゆうびんきょくはどこですか。'", "options": ["Di mana rumah sakit?", "Di mana kantor pos?", "Di mana stasiun?"], "answer": 1 },
+{ "type": "mcq", "q": "Kata tunjuk apa yang paling tepat untuk menunjukkan benda yang dekat dengan lawan bicara?", "options": ["あれ", "ここ", "そこ"], "answer": 2 },
+{ "type": "mcq", "q": "Manakah benda yang menggunakan kata kerja keberadaan 'あります'?", "options": ["ねこ (kucing)", "せんせい (guru)", "いす (kursi)"], "answer": 2 },
+{ "type": "mcq", "q": "Lengkapi kalimat: 'わたし の かぎ は ___ に あります。'", "options": ["だれ", "どこ", "ここ"], "answer": 2 },
+{ "type": "mcq", "q": "Pilih terjemahan yang tepat: 'この とけい は だれ の ですか。'", "options": ["Jam tangan itu milik saya.", "Jam tangan ini milik siapa?", "Apakah ini jam tangan?"], "answer": 1 },
+{ "type": "mcq", "q": "Kata mana yang berarti 'sebelah'?", "options": ["あいだ", "ちかく", "となり"], "answer": 2 },
+{ "type": "mcq", "q": "Apa arti dari kanji '左' (hidari)?", "options": ["Kiri", "Kanan", "Depan"], "answer": 0 },
+{ "type": "mcq", "q": "Berdasarkan Dokkai di atas, di mana lokasi bank?", "options": ["Di belakang gedung itu (ano biru).", "Di dalam sekolah.", "Di kamar Yamamoto-san."], "answer": 0 }
+]
+}
