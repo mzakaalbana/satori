@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Satori — Lesson</title>
+  <meta name="color-scheme" content="light dark" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>.jp{font-family:"Noto Sans JP",system-ui,sans-serif}</style>
+</head>
+<body class="min-h-dvh bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100">
+  <header class="max-w-5xl mx-auto px-4 py-4">
+    <nav class="flex items-center justify-between">
+      <a href="./n5.html" class="inline-flex items-center gap-2 text-sm opacity-80 hover:opacity-100">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Kembali ke N5
+      </a>
+      <a href="./upgrade.html" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-indigo-400/60 text-indigo-600 dark:text-indigo-300 hover:bg-indigo-50/50 dark:hover:bg-indigo-900/20 text-sm">Upgrade Premium</a>
+    </nav>
+    <h1 id="title" class="text-3xl sm:text-4xl font-bold mt-4">Lesson</h1>
+    <p id="subtitle" class="mt-2 opacity-80">Memuat data…</p>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-6 space-y-8">
+    <!-- Kotoba -->
+    <section class="rounded-2xl border border-gray-300/60 dark:border-white/10 p-5">
+      <h2 class="text-xl font-semibold">Kotoba (Kosakata)</h2>
+      <div class="mt-4 overflow-x-auto">
+        <table class="w-full text-sm border-separate border-spacing-y-2">
+          <thead class="text-left opacity-70">
+            <tr>
+              <th colspan="2" class="py-1 pr-3">Jepang</th>
+              <th class="py-1 pr-3">Indonesia</th>
+              <th class="py-1">Romaji</th>
+            </tr>
+            <tr>
+              <th class="py-1 pr-3">Kanji</th>
+              <th class="py-1 pr-3">Hiragana</th>
+              <th class="py-1 pr-3"></th>
+              <th class="py-1"></th>
+            </tr>
+          </thead>
+          <tbody id="vocabBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Bunpou -->
+    <section class="rounded-2xl border border-gray-300/60 dark:border-white/10 p-5">
+      <h2 class="text-xl font-semibold">Bunpou (Pola Kalimat)</h2>
+      <div id="bunpouBody" class="mt-4 space-y-4 text-sm"></div>
+    </section>
+
+    <!-- Kanji -->
+    <section class="rounded-2xl border border-gray-300/60 dark:border-white/10 p-5">
+      <h2 class="text-xl font-semibold">Kanji</h2>
+      <div id="kanjiBody" class="mt-3 grid sm:grid-cols-2 gap-3 text-sm"></div>
+    </section>
+
+    <!-- Dokkai -->
+    <section class="rounded-2xl border border-gray-300/60 dark:border-white/10 p-5">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-semibold">Dokkai (Membaca)</h2>
+        <button id="toggleDokkai" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-gray-300/60 dark:border-white/10 text-sm">
+          Tampilkan Terjemahan
+        </button>
+      </div>
+      <p id="dokkaiJP" class="jp mt-3"></p>
+      <p id="dokkaiID" class="mt-2 hidden"></p>
+      <ul id="dokkaiNotes" class="mt-3 text-sm opacity-90 list-disc list-inside"></ul>
+    </section>
+
+    <!-- Choukai (placeholder) -->
+    <section class="rounded-2xl border border-gray-300/60 dark:border-white/10 p-5">
+      <h2 class="text-xl font-semibold">Chōkai (Mendengarkan)</h2>
+      <div id="choukaiBody" class="mt-3 text-sm"></div>
+    </section>
+
+    <!-- Quiz Mini -->
+    <section class="rounded-2xl border border-gray-300/60 dark:border-white/10 p-5">
+      <h2 class="text-xl font-semibold">Quiz Mini</h2>
+      <div id="quizBody" class="mt-3 space-y-3 text-sm"></div>
+      <p class="mt-2 text-xs opacity-70">Quiz Mini menggabungkan materi kotoba/bunpou/kanji/dokkai/chōkai dari pelajaran ini.</p>
+    </section>
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-4 py-8 text-center text-sm opacity-70">
+    © 2025 Satori. Lesson template dinamis.
+  </footer>
+
+  <script>
+    const qs = new URLSearchParams(location.search);
+    const level = (qs.get('level') || 'n5').toLowerCase();
+    const lesson = qs.get('lesson') || '1';
+    const path = `./data/jlpt/${level}/lesson-${lesson}.json`;
+
+    const fallback = {
+      title: `N5 — Pelajaran ${lesson}`,
+      subtitle: "Contoh tampilan (fallback). Buat JSON agar konten aslinya muncul.",
+      vocab: [
+        { kanji:"学校", kana:"がっこう", id:"sekolah", romaji:"gakkō" },
+        { kanji:"先生", kana:"せんせい", id:"guru", romaji:"sensei" },
+        { kanji:"—", kana:"ありがとう", id:"terima kasih", romaji:"arigatō" }
+      ],
+      bunpou: [
+        { title:"A は B です", examples:[{jp:"わたしは がくせい です。", id:"Saya adalah mahasiswa."}], note:"Pola nominal dasar (A=B)." },
+        { title:"A の B", examples:[{jp:"にほんの たべもの。", id:"Makanan Jepang."}], note:"Kepunyaan/atribut." }
+      ],
+      kanji: [
+        { char:"日", id:"hari; matahari", on:"ニチ・ジツ", kun:"ひ・か" },
+        { char:"月", id:"bulan", on:"ゲツ・ガツ", kun:"つき" },
+        { char:"人", id:"orang", on:"ジン・ニン", kun:"ひと" },
+        { char:"大", id:"besar", on:"ダイ・タイ", kun:"おお-" }
+      ],
+      dokkai: {
+        jp:"これは がっこう です。 わたしは せんせい では ありません。 がくせい です。",
+        id:"Ini adalah sekolah. Saya bukan guru. Saya adalah mahasiswa.",
+        notes:["これは = ini","では ありません = negatif formal"]
+      },
+      choukai: {
+        question:"Apa arti “がっこう”?",
+        options:["Sekolah","Rumah","Kantor"],
+        answer:0
+      },
+      quiz: [
+        { type:"mcq", q:"Arti 学校?", options:["sekolah","guru","rumah"], answer:0 },
+        { type:"mcq", q:"Pola untuk ‘A adalah B’?", options:["A の B","A は B です","A で B"], answer:1 },
+        { type:"mcq", q:"On-yomi untuk ‘人’?", options:["ひと","ジン/ニン","にんげん"], answer:1 }
+      ]
+    };
+
+    const $ = (id)=>document.getElementById(id);
+
+    const render = (data) => {
+      $("title").textContent = `Satori — ${data.title}`;
+      $("title") && (document.title = `Satori — ${data.title}`);
+      $("title");
+      document.getElementById("title").textContent = data.title;
+      document.getElementById("subtitle").textContent = data.subtitle || `Level: ${level.toUpperCase()} • Pelajaran ${lesson}`;
+
+      // Kotoba
+      const vb = document.getElementById("vocabBody");
+      vb.innerHTML = (data.vocab||[]).map(v=>`
+        <tr class="align-top">
+          <td class="py-1 pr-3 jp">${v.kanji||"—"}</td>
+          <td class="py-1 pr-3 jp">${v.kana||""}</td>
+          <td class="py-1 pr-3">${v.id||""}</td>
+          <td class="py-1">${v.romaji||""}</td>
+        </tr>
+      `).join("");
+
+      // Bunpou
+      const bp = document.getElementById("bunpouBody");
+      bp.innerHTML = (data.bunpou||[]).map(b=>`
+        <article class="rounded-xl border border-gray-300/60 dark:border-white/10 p-4">
+          <h3 class="font-semibold">${b.title}</h3>
+          ${(b.examples||[]).map(ex=>`
+            <p class="jp mt-1">${ex.jp}</p>
+            <p class="mt-1 opacity-80">${ex.id||""}</p>
+          `).join("")}
+          ${b.note?`<p class="opacity-70 mt-2">${b.note}</p>`:""}
+        </article>
+      `).join("");
+
+      // Kanji
+      const kj = document.getElementById("kanjiBody");
+      kj.innerHTML = (data.kanji||[]).map(k=>`
+        <div class="rounded-xl border border-gray-300/60 dark:border-white/10 p-3">
+          <p class="text-2xl jp">${k.char}</p>
+          <p class="opacity-80 mt-1">${k.id||""}</p>
+          <p class="mt-1 text-xs opacity-70">On: ${k.on||"-"} / Kun: ${k.kun||"-"}</p>
+        </div>
+      `).join("");
+
+      // Dokkai
+      document.getElementById("dokkaiJP").textContent = data.dokkai?.jp || "";
+      document.getElementById("dokkaiID").textContent = data.dokkai?.id || "";
+      document.getElementById("dokkaiNotes").innerHTML = (data.dokkai?.notes||[]).map(n=>`<li>${n}</li>`).join("");
+      document.getElementById("toggleDokkai").onclick = ()=> {
+        document.getElementById("dokkaiID").classList.toggle("hidden");
+      };
+
+      // Choukai
+      const ck = document.getElementById("choukaiBody");
+      if (data.choukai) {
+        ck.innerHTML = `
+          <p class="font-medium">Contoh soal:</p>
+          <p class="mt-1">${data.choukai.question}</p>
+          <ul class="list-disc list-inside opacity-90">
+            ${(data.choukai.options||[]).map(o=>`<li>${o}</li>`).join("")}
+          </ul>
+        `;
+      } else {
+        ck.textContent = "Belum ada data chōkai.";
+      }
+
+      // Quiz Mini (gabungan)
+      const qb = document.getElementById("quizBody");
+      qb.innerHTML = (data.quiz||[]).map((q,i)=>`
+        <div class="rounded-xl border border-gray-300/60 dark:border-white/10 p-3">
+          <p class="font-medium">Q${i+1}. ${q.q}</p>
+          ${q.type==="mcq" ? `
+            <ol class="list-decimal list-inside mt-1">
+              ${q.options.map((op,idx)=>`<li>${op}${idx===q.answer?" <span class='text-emerald-600'>(jawaban)</span>":""}</li>`).join("")}
+            </ol>
+          ` : ""}
+        </div>
+      `).join("");
+    };
+
+    fetch(path).then(r=>{
+      if(!r.ok) throw new Error("no data");
+      return r.json();
+    }).then(render).catch(()=>{
+      render(fallback);
+    });
+  </script>
+</body>
+</html>
