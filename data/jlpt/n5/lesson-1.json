@@ -1,0 +1,61 @@
+{
+  "title": "N5 — Pelajaran 1",
+  "subtitle": "Salam & sekolah • Kotoba + Bunpou dasar",
+  "vocab": [
+    { "kanji": "学校", "kana": "がっこう", "id": "sekolah", "romaji": "gakkō" },
+    { "kanji": "先生", "kana": "せんせい", "id": "guru", "romaji": "sensei" },
+    { "kanji": "学生", "kana": "がくせい", "id": "mahasiswa/siswa", "romaji": "gakusei" },
+    { "kanji": "日本", "kana": "にほん", "id": "Jepang", "romaji": "nihon" },
+    { "kanji": "名前", "kana": "なまえ", "id": "nama", "romaji": "namae" },
+    { "kanji": "私", "kana": "わたし", "id": "saya", "romaji": "watashi" },
+    { "kanji": "—", "kana": "こんにちは", "id": "selamat siang/halo", "romaji": "konnichiwa" },
+    { "kanji": "—", "kana": "ありがとう", "id": "terima kasih", "romaji": "arigatō" },
+    { "kanji": "—", "kana": "すみません", "id": "maaf/permisi", "romaji": "sumimasen" },
+    { "kanji": "教室", "kana": "きょうしつ", "id": "ruang kelas", "romaji": "kyōshitsu" },
+    { "kanji": "本", "kana": "ほん", "id": "buku", "romaji": "hon" },
+    { "kanji": "机", "kana": "つくえ", "id": "meja", "romaji": "tsukue" }
+  ],
+  "bunpou": [
+    {
+      "title": "A は B です",
+      "examples": [
+        { "jp": "わたしは がくせい です。", "id": "Saya adalah mahasiswa." },
+        { "jp": "ここは がっこう です。", "id": "Ini adalah sekolah." }
+      ],
+      "note": "Kopula dasar untuk menyatakan identitas/keberadaan."
+    },
+    {
+      "title": "A の B（kepunyaan/atribut）",
+      "examples": [
+        { "jp": "にほんの ほん です。", "id": "Ini buku Jepang." },
+        { "jp": "わたしの なまえ は アリ です。", "id": "Nama saya Ari." }
+      ],
+      "note": "の menghubungkan kata benda (kepunyaan/asal/atribut)."
+    }
+  ],
+  "kanji": [
+    { "char": "日", "id": "hari; matahari", "on": "ニチ・ジツ", "kun": "ひ・か" },
+    { "char": "月", "id": "bulan", "on": "ゲツ・ガツ", "kun": "つき" },
+    { "char": "人", "id": "orang", "on": "ジン・ニン", "kun": "ひと" },
+    { "char": "大", "id": "besar", "on": "ダイ・タイ", "kun": "おお-" },
+    { "char": "本", "id": "buku; asal", "on": "ホン", "kun": "もと" }
+  ],
+  "dokkai": {
+    "jp": "ここは がっこう です。 わたしは せんせい では ありません。 がくせい です。 なまえは アリ です。",
+    "id": "Ini adalah sekolah. Saya bukan guru. Saya seorang mahasiswa. Nama saya Ari.",
+    "notes": ["では ありません = bentuk negatif formal", "なまえ = nama"]
+  },
+  "choukai": {
+    "question": "Anda mendengar kata『がっこう』. Apa artinya?",
+    "options": ["Sekolah", "Rumah", "Kantor"],
+    "answer": 0
+  },
+  "quiz": [
+    { "type": "mcq", "q": "Arti 『先生』?", "options": ["guru", "murid", "buku"], "answer": 0 },
+    { "type": "mcq", "q": "Romaji untuk 『がくせい』?", "options": ["gakkō", "gakusei", "sensei"], "answer": 1 },
+    { "type": "mcq", "q": "Pola untuk ‘A adalah B’?", "options": ["A の B", "A は B です", "A を B"], "answer": 1 },
+    { "type": "mcq", "q": "Kanji mana berarti ‘buku’?", "options": ["日", "本", "人"], "answer": 1 },
+    { "type": "mcq", "q": "『すみません』 paling dekat artinya…", "options": ["permisi/maaf", "tolong", "selamat malam"], "answer": 0 },
+    { "type": "mcq", "q": "Dalam kalimat『わたしの なまえ は…』, fungsi の adalah…", "options": ["objek", "kepunyaan/atribut", "penanda lokasi"], "answer": 1 }
+  ]
+}
