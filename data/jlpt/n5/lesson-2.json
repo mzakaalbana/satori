@@ -1,22 +1,80 @@
 {
-  "title": "N5 — Pelajaran 2",
-  "subtitle": "",
-  "vocab": [
-    { "kanji": "", "kana": "", "id": "", "romaji": "" }
-  ],
-  "bunpou": [
-    {
-      "title": "",
-      "examples": [ { "jp": "", "id": "" } ],
-      "note": ""
-    }
-  ],
-  "kanji": [
-    { "char": "", "id": "", "on": "", "kun": "" }
-  ],
-  "dokkai": { "jp": "", "id": "", "notes": [] },
-  "choukai": { "question": "", "options": ["", "", ""], "answer": 0 },
-  "quiz": [
-    { "type": "mcq", "q": "", "options": ["", "", ""], "answer": 0 }
-  ]
+"title": "N5 — Pelajaran 2",
+"subtitle": "Kore/Sore/Are dan Kepemilikan Benda",
+"vocab": [
+{ "kanji": "辞書", "kana": "じしょ", "id": "kamus", "romaji": "jisho" },
+{ "kanji": "鉛筆", "kana": "えんぴつ", "id": "pensil", "romaji": "enpitsu" },
+{ "kanji": "時計", "kana": "とけい", "id": "jam tangan/dinding", "romaji": "tokei" },
+{ "kanji": "傘", "kana": "かさ", "id": "payung", "romaji": "kasa" },
+{ "kanji": "鍵", "kana": "かぎ", "id": "kunci", "romaji": "kagi" },
+{ "kanji": "写真", "kana": "しゃしん", "id": "foto", "romaji": "shashin" },
+{ "kanji": "手帳", "kana": "てちょう", "id": "buku catatan saku", "romaji": "techou" },
+{ "kanji": "財布", "kana": "さいふ", "id": "dompet", "romaji": "saifu" },
+{ "kanji": "新聞", "kana": "しんぶん", "id": "koran", "romaji": "shinbun" },
+{ "kanji": "—", "kana": "ノート", "id": "buku catatan", "romaji": "nooto" },
+{ "kanji": "—", "kana": "コンピューター", "id": "komputer", "romaji": "konpyuutaa" },
+{ "kanji": "—", "kana": "カメラ", "id": "kamera", "romaji": "kamera" },
+{ "kanji": "—", "kana": "テレビ", "id": "televisi", "romaji": "terebi" },
+{ "kanji": "—", "kana": "ラジオ", "id": "radio", "romaji": "rajio" },
+{ "kanji": "—", "kana": "かばん", "id": "tas", "romaji": "kaban" },
+{ "kanji": "—", "kana": "ちず", "id": "peta", "romaji": "chizu" },
+{ "kanji": "—", "kana": "えいご", "id": "bahasa inggris", "romaji": "eigo" },
+{ "kanji": "—", "kana": "にほんご", "id": "bahasa jepang", "romaji": "nihongo" },
+{ "kanji": "—", "kana": "お土産", "id": "oleh-oleh", "romaji": "omiyage" },
+{ "kanji": "—", "kana": "どうぞ", "id": "silakan", "romaji": "douzo" }
+],
+"bunpou": [
+{
+"title": "Kore / Sore / Are (Kata Tunjuk Benda)",
+"examples": [
+{ "jp": "これ は だれの じしょ ですか。", "id": "Ini kamus milik siapa?" },
+{ "jp": "それ は わたし の さいふ です。", "id": "Itu (di dekat lawan bicara) adalah dompet saya." },
+{ "jp": "あれ は さとうさん の かさ じゃないです。", "id": "Itu (jauh) bukanlah payung milik Sato-san." }
+],
+"note": "Penggunaan: これ (di dekat pembicara), それ (di dekat lawan bicara), あれ (jauh dari keduanya). Selalu diikuti oleh partikel は."
+},
+{
+"title": "Kata Benda 1 の Kata Benda 2 (Menunjukkan Kepemilikan/Keterangan)",
+"examples": [
+{ "jp": "この とけい は だれ の ですか。", "id": "Jam tangan ini milik siapa?" },
+{ "jp": "わたし の かばん の なか に あります。", "id": "Ada di dalam tas saya." },
+{ "jp": "これは アメリカ の おみやげ です。", "id": "Ini adalah oleh-oleh dari Amerika." }
+],
+"note": "Partikel の menghubungkan dua kata benda. Sering digunakan untuk menunjukkan kepemilikan (わたし の じしょ = kamus saya) atau keterangan asal (にほんご の ほん = buku (tentang) Bahasa Jepang)."
+}
+],
+"kanji": [
+{ "char": "書", "id": "menulis", "on": "ショ", "kun": "か(く)" },
+{ "char": "語", "id": "bahasa; kata", "on": "ゴ", "kun": "かた(る)" },
+{ "char": "英", "id": "inggris; unggul", "on": "エイ", "kun": "—" },
+{ "char": "勉", "id": "berusaha", "on": "ベン", "kun": "つと(める)" },
+{ "char": "友", "id": "teman", "on": "ユウ", "kun": "とも" }
+],
+"dokkai": {
+"jp": "あの えんぴつ は、わたし の じゃなくて、やまもとさん の です。これは わたしの てちょう です。あなたの かぎ は テーブル の うえ に ありますよ。どうぞ。",
+"id": "Pensil itu bukan milik saya, melainkan milik Yamamoto-san. Ini adalah buku catatan saku saya. Kunci Anda ada di atas meja lho. Silakan.",
+"notes": [
+"Kata だれ (dare) berarti 'siapa' dan digunakan untuk menanyakan kepemilikan.",
+"Akhiran よ (yo) memberikan penekanan ringan atau memastikan informasi ('lho', 'saya beritahu Anda').",
+"じゃないです (janai desu) adalah bentuk informal yang umum dipakai di N5 untuk menyatakan 'bukan'."
+]
+},
+"choukai": {
+"question": "Seorang guru dan murid sedang berbicara. Di mana jam tangan sang guru?",
+"audioScript": "先生：すみません、わたしの とけい は どこですか。生徒：せんせい、それ は あなたの かばん の うえ に ありますよ。",
+"options": ["Di dalam tas murid.", "Di atas tas guru.", "Di atas meja."],
+"answer": 1
+},
+"quiz": [
+{ "type": "mcq", "q": "Pilih terjemahan yang tepat: 'あれはだれのカメラですか。'", "options": ["Ini kamera saya.", "Itu (jauh) kamera milik siapa?", "Itu (dekat lawan bicara) kamera kami."], "answer": 1 },
+{ "type": "mcq", "q": "Manakah yang merupakan cara baca On'yomi dari Kanji '友'?", "options": ["とも", "ユウ", "だち"], "answer": 1 },
+{ "type": "mcq", "q": "Lengkapi kalimat: 'これ は にほんご ___ じしょ です。'", "options": ["が", "の", "を"], "answer": 1 },
+{ "type": "mcq", "q": "Apa arti dari 'しんぶん'?", "options": ["Majalah", "Buku komik", "Koran"], "answer": 2 },
+{ "type": "mcq", "q": "Kata tunjuk apa yang digunakan untuk benda yang dekat dengan lawan bicara?", "options": ["あれ", "それ", "これ"], "answer": 1 },
+{ "type": "mcq", "q": "Kata mana yang berarti 'kunci'?", "options": ["かさ", "さいふ", "かぎ"], "answer": 2 },
+{ "type": "mcq", "q": "Pilih terjemahan yang tepat: '英語の新聞'", "options": ["Koran Bahasa Jepang", "Koran Bahasa Inggris", "Kamus Bahasa Inggris"], "answer": 1 },
+{ "type": "mcq", "q": "Berdasarkan Dokkai di atas, barang siapa yang ada di atas meja?", "options": ["Kunci milik Yamamoto-san", "Buku catatan saku pembicara", "Kunci milik lawan bicara"], "answer": 2 },
+{ "type": "mcq", "q": "Apakah arti dari kanji '勉'?", "options": ["Teman", "Bahasa", "Berusaha"], "answer": 2 },
+{ "type": "mcq", "q": "Lengkapi kalimat: 'それ は あなた の ___ じゃありません。'", "options": ["かぎ", "です", "ほん"], "answer": 0 }
+]
 }
