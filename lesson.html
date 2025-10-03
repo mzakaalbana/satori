@@ -72,7 +72,7 @@
       <ul id="dokkaiNotes" class="mt-3 text-sm opacity-90 list-disc list-inside"></ul>
     </section>
 
-    <!-- Choukai (placeholder) -->
+    <!-- Choukai -->
     <section class="rounded-2xl border border-gray-300/60 dark:border-white/10 p-5">
       <h2 class="text-xl font-semibold">Chōkai (Mendengarkan)</h2>
       <div id="choukaiBody" class="mt-3 text-sm"></div>
@@ -87,7 +87,7 @@
   </main>
 
   <footer class="max-w-5xl mx-auto px-4 py-8 text-center text-sm opacity-70">
-    © 2025 Satori. Lesson template dinamis.
+    © 2025 Satori. Lesson template dinamis (JSON-only).
   </footer>
 
   <script>
@@ -95,6 +95,7 @@
     const level = (qs.get('level') || 'n5').toLowerCase();
     const lesson = qs.get('lesson') || '1';
     const path = `./data/jlpt/${level}/lesson-${lesson}.json`;
+    const $ = (id)=>document.getElementById(id);
 
     const fallback = {
       title: `N5 — Pelajaran ${lesson}`,
@@ -131,18 +132,13 @@
       ]
     };
 
-    const $ = (id)=>document.getElementById(id);
-
-    const render = (data) => {
-      $("title").textContent = `Satori — ${data.title}`;
-      $("title") && (document.title = `Satori — ${data.title}`);
-      $("title");
-      document.getElementById("title").textContent = data.title;
-      document.getElementById("subtitle").textContent = data.subtitle || `Level: ${level.toUpperCase()} • Pelajaran ${lesson}`;
+    function render(data) {
+      document.title = `Satori — ${data.title || `N5 — Pelajaran ${lesson}`}`;
+      $("title").textContent = data.title || `N5 — Pelajaran ${lesson}`;
+      $("subtitle").textContent = data.subtitle || `Level: ${level.toUpperCase()} • Pelajaran ${lesson}`;
 
       // Kotoba
-      const vb = document.getElementById("vocabBody");
-      vb.innerHTML = (data.vocab||[]).map(v=>`
+      $("vocabBody").innerHTML = (data.vocab||[]).map(v=>`
         <tr class="align-top">
           <td class="py-1 pr-3 jp">${v.kanji||"—"}</td>
           <td class="py-1 pr-3 jp">${v.kana||""}</td>
@@ -152,8 +148,7 @@
       `).join("");
 
       // Bunpou
-      const bp = document.getElementById("bunpouBody");
-      bp.innerHTML = (data.bunpou||[]).map(b=>`
+      $("bunpouBody").innerHTML = (data.bunpou||[]).map(b=>`
         <article class="rounded-xl border border-gray-300/60 dark:border-white/10 p-4">
           <h3 class="font-semibold">${b.title}</h3>
           ${(b.examples||[]).map(ex=>`
@@ -165,8 +160,7 @@
       `).join("");
 
       // Kanji
-      const kj = document.getElementById("kanjiBody");
-      kj.innerHTML = (data.kanji||[]).map(k=>`
+      $("kanjiBody").innerHTML = (data.kanji||[]).map(k=>`
         <div class="rounded-xl border border-gray-300/60 dark:border-white/10 p-3">
           <p class="text-2xl jp">${k.char}</p>
           <p class="opacity-80 mt-1">${k.id||""}</p>
@@ -196,9 +190,8 @@
         ck.textContent = "Belum ada data chōkai.";
       }
 
-      // Quiz Mini (gabungan)
-      const qb = document.getElementById("quizBody");
-      qb.innerHTML = (data.quiz||[]).map((q,i)=>`
+      // Quiz
+      document.getElementById("quizBody").innerHTML = (data.quiz||[]).map((q,i)=>`
         <div class="rounded-xl border border-gray-300/60 dark:border-white/10 p-3">
           <p class="font-medium">Q${i+1}. ${q.q}</p>
           ${q.type==="mcq" ? `
@@ -208,7 +201,7 @@
           ` : ""}
         </div>
       `).join("");
-    };
+    }
 
     fetch(path).then(r=>{
       if(!r.ok) throw new Error("no data");
