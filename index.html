@@ -4,46 +4,47 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Satori — Belajar Bahasa Jepang Online</title>
-
-  <!-- Tailwind via CDN (tanpa install) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
   <meta name="color-scheme" content="light dark" />
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="min-h-dvh bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100">
-  <main id="root" class="grid place-items-center min-h-dvh p-6"></main>
+  <main id="root" class="grid place-items-center min-h-dvh p-6">
+    <!-- Fallback jika JS belum jalan -->
+    <div class="text-center opacity-70">Memuat Satori…</div>
+  </main>
 
-  <!-- React via ESM CDN (tanpa install) -->
-  <script type="module">
-    import React, { useState } from "https://esm.sh/react@18";
-    import { createRoot } from "https://esm.sh/react-dom@18/client";
+  <!-- React UMD (global React & ReactDOM, tanpa module import) -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <!-- Babel Standalone agar bisa pakai JSX langsung di browser -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    function Pill({ children }) {
-      return (
-        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-300/60 dark:border-white/10 text-sm">
-          {children}
-        </span>
-      );
-    }
+  <!-- App JSX -->
+  <script type="text/babel">
+    const Pill = ({ children }) => (
+      <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-300/60 dark:border-white/10 text-sm">
+        {children}
+      </span>
+    );
 
-    function Card({ title, desc, tag, cta, href = "#" }) {
-      return (
-        <a href={href}
-           className="block rounded-2xl border border-gray-300/60 dark:border-white/10 p-5 hover:shadow-md hover:-translate-y-0.5 transition">
-          <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold">{title}</h3>
-            {tag ? <Pill>{tag}</Pill> : null}
-          </div>
-          <p className="mt-2 text-sm opacity-80">{desc}</p>
-          <div className="mt-4 inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
-            <span className="font-medium">{cta}</span>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 8.25L21 12l-3.75 3.75M21 12H3"/>
-            </svg>
-          </div>
-        </a>
-      );
-    }
+    const Card = ({ title, desc, tag, cta, href = "#" }) => (
+      <a href={href}
+         className="block rounded-2xl border border-gray-300/60 dark:border-white/10 p-5 hover:shadow-md hover:-translate-y-0.5 transition">
+        <div className="flex items-center justify-between">
+          <h3 className="text-lg font-semibold">{title}</h3>
+          {tag ? <Pill>{tag}</Pill> : null}
+        </div>
+        <p className="mt-2 text-sm opacity-80">{desc}</p>
+        <div className="mt-4 inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
+          <span className="font-medium">{cta}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.25 8.25L21 12l-3.75 3.75M21 12H3"/>
+          </svg>
+        </div>
+      </a>
+    );
 
     function App() {
       return (
@@ -52,7 +53,7 @@
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">✨ Satori</h1>
             <p className="mt-2 opacity-80">
               Web app belajar bahasa Jepang (N5 → N1) + SSW Kaigo (bilingual). <br/>
-              MVP fokus: <strong>N5 → N4</strong> dengan model <strong>Freemium (Gated)</strong>.
+              MVP fokus: <strong>N5 → N4</strong> • Model <strong>Freemium (Gated)</strong>.
             </p>
             <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
               <Pill>N5: 30 SRS/hari</Pill>
@@ -70,20 +71,21 @@
             />
             <Card
               title="SSW Track — Kaigo"
-              desc="Materi Kaigo bilingual (JP–ID). Orientasi + Unit 1 gratis sebagai trial; full unit untuk Premium."
+              desc="Materi Kaigo bilingual (JP–ID). Orientasi + Unit 1 gratis (trial); full unit untuk Premium."
               tag="Trial tersedia"
               cta="Masuk ke Jalur SSW"
             />
           </section>
 
           <footer className="mt-10 text-center text-sm opacity-70">
-            © 2025 Satori. Versi awal (React + Tailwind via CDN).
+            © 2025 Satori. Versi awal (React + Tailwind UMD).
           </footer>
         </div>
       );
     }
 
-    createRoot(document.getElementById("root")).render(<App />);
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
   </script>
 </body>
 </html>
