@@ -8,8 +8,6 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .jp { font-family: "Noto Sans JP", system-ui, sans-serif; }
-    .ruby rt { font-size: .7em; opacity:.8 }
-    .btn { @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-sm; }
   </style>
 </head>
 <body class="min-h-dvh bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100">
@@ -27,7 +25,7 @@
     </nav>
 
     <h1 class="text-3xl sm:text-4xl font-bold mt-4">N5 — Pelajaran 1</h1>
-    <p class="mt-2 opacity-80">Template konten pelajaran. Nanti kamu tinggal ganti/isi data kotoba, bunpou, kanji, dll.</p>
+    <p class="mt-2 opacity-80">Template konten pelajaran. Kotoba ditampilkan dengan kolom <strong>Kanji</strong> & <strong>Hiragana</strong> (tanpa furigana/toggle). Quiz Mini nanti menguji semua materi di pelajaran ini.</p>
 
     <div class="mt-3 flex flex-wrap items-center gap-2 text-sm">
       <span class="inline-flex px-3 py-1 rounded-full border border-gray-300/60 dark:border-white/10">Kotoba</span>
@@ -40,67 +38,57 @@
   </header>
 
   <main class="max-w-5xl mx-auto px-4 py-6 space-y-8">
-    <!-- Kotoba: side-by-side JP ⇄ ID -->
+    <!-- Kotoba: JP dibagi Kanji | Hiragana -->
     <section class="rounded-2xl border border-gray-300/60 dark:border-white/10 p-5">
-      <div class="flex items-center justify-between">
-        <h2 class="text-xl font-semibold">Kotoba (Kosakata)</h2>
-        <div class="flex items-center gap-2 text-sm">
-          <label class="inline-flex items-center gap-2 cursor-pointer">
-            <input id="toggleRomaji" type="checkbox" class="accent-indigo-600">
-            <span>Romaji</span>
-          </label>
-          <label class="inline-flex items-center gap-2 cursor-pointer">
-            <input id="toggleFurigana" type="checkbox" class="accent-indigo-600" checked>
-            <span>Furigana</span>
-          </label>
-        </div>
-      </div>
-
+      <h2 class="text-xl font-semibold">Kotoba (Kosakata)</h2>
       <div class="mt-4 overflow-x-auto">
         <table class="w-full text-sm border-separate border-spacing-y-2">
           <thead class="text-left opacity-70">
             <tr>
-              <th class="py-1 pr-3">Jepang</th>
+              <th colspan="2" class="py-1 pr-3">Jepang</th>
               <th class="py-1 pr-3">Indonesia</th>
               <th class="py-1">Romaji</th>
+            </tr>
+            <tr>
+              <th class="py-1 pr-3">Kanji</th>
+              <th class="py-1 pr-3">Hiragana</th>
+              <th class="py-1 pr-3"></th>
+              <th class="py-1"></th>
             </tr>
           </thead>
           <tbody id="vocabBody">
             <!-- contoh data; nanti tinggal ganti/duplikasi baris -->
             <tr class="align-top">
-              <td class="py-1 pr-3 jp">
-                <ruby class="furigana"><rb>学校</rb><rt>がっこう</rt></ruby>
-                <span class="kana hidden">がっこう</span>
-              </td>
+              <td class="py-1 pr-3 jp">学校</td>
+              <td class="py-1 pr-3 jp">がっこう</td>
               <td class="py-1 pr-3">sekolah</td>
-              <td class="py-1 romaji">gakkō</td>
+              <td class="py-1">gakkō</td>
             </tr>
             <tr class="align-top">
-              <td class="py-1 pr-3 jp">
-                <ruby class="furigana"><rb>先生</rb><rt>せんせい</rt></ruby>
-                <span class="kana hidden">せんせい</span>
-              </td>
+              <td class="py-1 pr-3 jp">先生</td>
+              <td class="py-1 pr-3 jp">せんせい</td>
               <td class="py-1 pr-3">guru</td>
-              <td class="py-1 romaji">sensei</td>
+              <td class="py-1">sensei</td>
             </tr>
             <tr class="align-top">
-              <td class="py-1 pr-3 jp">
-                <span class="kana">ありがとう</span>
-              </td>
+              <td class="py-1 pr-3 jp">—</td>
+              <td class="py-1 pr-3 jp">ありがとう</td>
               <td class="py-1 pr-3">terima kasih</td>
-              <td class="py-1 romaji">arigatō</td>
+              <td class="py-1">arigatō</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p class="mt-3 text-xs opacity-70">Tip: untuk kata tanpa kanji, cukup pakai <span class="kana">kana</span> saja.</p>
+      <p class="mt-3 text-xs opacity-70">Jika sebuah kata tidak memiliki kanji (mis. ungkapan umum), isi kolom Kanji dengan “—”.</p>
     </section>
 
     <!-- Bunpou: toggling terjemahan -->
     <section class="rounded-2xl border border-gray-300/60 dark:border-white/10 p-5">
       <div class="flex items-center justify-between">
         <h2 class="text-xl font-semibold">Bunpou (Pola Kalimat)</h2>
-        <button id="toggleTrans" class="btn border-gray-300/60 dark:border-white/10">Tampilkan Terjemahan</button>
+        <button id="toggleTrans" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-gray-300/60 dark:border-white/10 text-sm">
+          Tampilkan Terjemahan
+        </button>
       </div>
       <div class="mt-4 space-y-4 text-sm">
         <article class="rounded-xl border border-gray-300/60 dark:border-white/10 p-4">
@@ -149,7 +137,9 @@
     <section class="rounded-2xl border border-gray-300/60 dark:border-white/10 p-5">
       <div class="flex items-center justify-between">
         <h2 class="text-xl font-semibold">Dokkai (Membaca)</h2>
-        <button id="toggleDokkai" class="btn border-gray-300/60 dark:border-white/10">Tampilkan Terjemahan</button>
+        <button id="toggleDokkai" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-gray-300/60 dark:border-white/10 text-sm">
+          Tampilkan Terjemahan
+        </button>
       </div>
       <p class="jp mt-3">
         これは がっこう です。 わたしは せんせい では ありません。 がくせい です。
@@ -180,10 +170,13 @@
       </div>
     </section>
 
-    <!-- Quiz placeholder -->
+    <!-- Quiz Mini -->
     <section class="rounded-2xl border border-gray-300/60 dark:border-white/10 p-5">
       <h2 class="text-xl font-semibold">Quiz Mini</h2>
-      <p class="mt-2 text-sm opacity-90">Nanti diisi soal interaktif. Untuk sementara, ini placeholder.</p>
+      <p class="mt-2 text-sm opacity-90">
+        Di sini nantinya akan muncul soal yang mencakup <strong>semua materi</strong> pelajaran ini (Kotoba, Bunpou, Kanji, Dokkai, Chōkai).
+      </p>
+      <p class="mt-1 text-xs opacity-70">Catatan: implementasi dinamisnya kita kerjakan setelah struktur konten final.</p>
     </section>
   </main>
 
@@ -192,22 +185,6 @@
   </footer>
 
   <script>
-    // Toggle romaji & furigana
-    const chkRomaji = document.getElementById('toggleRomaji');
-    const chkFuri = document.getElementById('toggleFurigana');
-    const romajis = () => document.querySelectorAll('.romaji');
-    const furiganas = () => document.querySelectorAll('.furigana');
-    const kanas = () => document.querySelectorAll('.kana');
-
-    const applyToggles = () => {
-      romajis().forEach(el => el.style.display = chkRomaji.checked ? '' : 'none');
-      furiganas().forEach(el => el.style.display = chkFuri.checked ? '' : 'none');
-      kanas().forEach(el => el.style.display = chkFuri.checked ? 'none' : '');
-    };
-    chkRomaji.addEventListener('change', applyToggles);
-    chkFuri.addEventListener('change', applyToggles);
-    applyToggles();
-
     // Toggle terjemahan bunpou
     document.getElementById('toggleTrans').addEventListener('click', () => {
       document.querySelectorAll('.trans').forEach(p => p.classList.toggle('hidden'));
