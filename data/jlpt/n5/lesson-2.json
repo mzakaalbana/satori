@@ -1,0 +1,22 @@
+{
+  "title": "N5 — Pelajaran 2",
+  "subtitle": "",
+  "vocab": [
+    { "kanji": "", "kana": "", "id": "", "romaji": "" }
+  ],
+  "bunpou": [
+    {
+      "title": "",
+      "examples": [ { "jp": "", "id": "" } ],
+      "note": ""
+    }
+  ],
+  "kanji": [
+    { "char": "", "id": "", "on": "", "kun": "" }
+  ],
+  "dokkai": { "jp": "", "id": "", "notes": [] },
+  "choukai": { "question": "", "options": ["", "", ""], "answer": 0 },
+  "quiz": [
+    { "type": "mcq", "q": "", "options": ["", "", ""], "answer": 0 }
+  ]
+}
